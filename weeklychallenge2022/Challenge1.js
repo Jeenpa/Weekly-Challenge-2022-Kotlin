@@ -1,5 +1,3 @@
-package com.mouredev.weeklychallenge2022
-
 /*
  * Reto #1
  * ¿ES UN ANAGRAMA?
@@ -20,13 +18,15 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
-fun main() {
-    println(isAnagram("amor", "roma"))
+
+function anagrama(str1, str2){
+    if (str1.toLowerCase() === str2.toLowerCase()){
+        return false;
+    } else{
+        str1Arr = str1.toLowerCase().split('');
+        str2Arr = str2.toLowerCase().split('');
+        return str1Arr.sort().join() === str2Arr.sort().join()
+    }
 }
 
-private fun isAnagram(wordOne: String, wordTwo: String): Boolean {
-    if (wordOne.lowercase() == wordTwo.lowercase()) {
-        return false
-    }
-    return wordOne.lowercase().toCharArray().sortedArray().contentEquals(wordTwo.lowercase().toCharArray().sortedArray())
-}
+anagrama('amor', 'roma');

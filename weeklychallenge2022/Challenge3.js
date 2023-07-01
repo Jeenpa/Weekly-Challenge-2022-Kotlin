@@ -1,5 +1,3 @@
-package com.mouredev.weeklychallenge2022
-
 /*
  * Reto #3
  * ¿ES UN NÚMERO PRIMO?
@@ -18,29 +16,21 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
-fun main() {
 
-    (1..100).forEach { number ->
-        if (isPrime(number)) {
-            println(number)
-        }
+function esPrimo(n){
+    if(n<2) return false;
+
+    for (let i = 2; i < n; i++){
+        if (n % i === 0) return false;
+    }
+
+    return true;
+}
+
+function imprimirPrimos(){
+    for (let i = 1; i <= 100; i++){
+        if (esPrimo(i)) console.log(i);
     }
 }
 
-private fun isPrime(number: Int): Boolean {
-
-    if (number < 2) {
-        return false
-    }
-
-    for (i in 2 until number) {
-        if (number % i == 0) {
-            return false
-        }
-    }
-
-    return true
-}
-
-
-
+imprimirPrimos();

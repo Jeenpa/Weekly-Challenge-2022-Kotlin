@@ -1,5 +1,3 @@
-package com.mouredev.weeklychallenge2022
-
 /*
  * Reto #8
  * DECIMAL A BINARIO
@@ -17,24 +15,13 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
-fun main() {
-    println(decimalToBinary(387))
-    println(decimalToBinary(0))
-}
-
-fun decimalToBinary(decimal: Int): String {
-
-    var number = decimal
-    var binary = ""
-
-    while (number != 0) {
-
-        val reminder = number % 2
-        number /= 2
-
-        binary = "$reminder$binary"
+function decimalBinario(n){
+    let binario = "";
+    while(n > 0){
+        binario = (n % 2) + binario;
+        n = Math.floor(n / 2);
     }
-
-    return binary.ifEmpty { "0" }
+    console.log(binario);
 }
 
+decimalBinario(10);
