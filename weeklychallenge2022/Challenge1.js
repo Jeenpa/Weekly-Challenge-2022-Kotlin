@@ -25,6 +25,7 @@ function anagrama(str1, str2){
     } else{
         str1Arr = str1.toLowerCase().split('');
         str2Arr = str2.toLowerCase().split('');
+        console.log(str1Arr.sort().join() === str2Arr.sort().join());
         return str1Arr.sort().join() === str2Arr.sort().join()
     }
 }

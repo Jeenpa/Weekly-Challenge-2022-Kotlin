@@ -18,79 +18,104 @@
  *
  */
 
-fun main() {
 
-    val naturalText = "Chocapic. Es una marca de cereales?"
-    val morseText = decoder(naturalText)
-    println(morseText)
-    println(decoder(morseText))
-}
+function codeMorse(str){
+    let morse = {
+        "a": ".-",
+        "b": "-...",
+        "c": "-.-.",
+        "d": "-..",
+        "e": ".",
+        "f": "..-.",
+        "g": "--.",
+        "h": "....",
+        "i": "..",
+        "j": ".---",
+        "k": "-.-",
+        "l": ".-..",
+        "m": "--",
+        "n": "-.",
+        "o": "---",
+        "p": ".--.",
+        "q": "--.-",
+        "r": ".-.",
+        "s": "...",
+        "t": "-",
+        "u": "..-",
+        "v": "...-",
+        "w": ".--",
+        "x": "-..-",
+        "y": "-.--",
+        "z": "--..",
+        "1": ".----",
+        "2": "..---",
+        "3": "...--",
+        "4": "....-",
+        "5": ".....",
+        "6": "-....",
+        "7": "--...",
+        "8": "---..",
+        "9": "----.",
+        "0": "-----",
+        " ": "/"
+        }, 
+        es = {
+        ".-": "a",
+        "-...": "b",
+        "-.-.": "c",
+        "-..": "d",
+        ".": "e",
+        "..-.": "f",
+        "--.": "g",
+        "....": "h",
+        "..": "i",
+        ".---": "j",
+        "-.-": "k",
+        ".-..": "l",
+        "--": "m",
+        "-.": "n",
+        "---": "o",
+        ".--.": "p",
+        "--.-": "q",
+        ".-.": "r",
+        "...": "s",
+        "-": "t",
+        "..-": "u",
+        "...-": "v",
+        ".--": "w",
+        "-..-": "x",
+        "-.--": "y",
+        "--..": "z",
+        ".----": "1",
+        "..---": "2",
+        "...--": "3",
+        "....-": "4",
+        ".....": "5",
+        "-....": "6",
+        "--...": "7",
+        "---..": "8",
+        "----.": "9",
+        "-----": "0",
+        "/": " "
+        }
+        
+    let string = str.toLowerCase(), strArray = string.split(' '), decode = "";
 
-private fun decoder(input: String): String {
-
-    var decodedInput = ""
-
-    val naturalDict = mapOf("A" to ".—", "N" to "—.", "0" to "—————",
-        "B" to "—...", "Ñ" to "——.——", "1" to ".————",
-        "C" to "—.—.", "O" to "———", "2" to "..———",
-        "CH" to "————", "P" to ".——.", "3" to "...——",
-        "D" to "—..", "Q" to "——.—", "4" to "....—",
-        "E" to ".", "R" to ".—.", "5" to ".....",
-        "F" to "..—.", "S" to "...", "6" to "—....",
-        "G" to "——.", "T" to "—", "7" to "——...",
-        "H" to "....", "U" to "..—", "8" to "———..",
-        "I" to "..", "V" to "...—", "9" to "————.",
-        "J" to ".———", "W" to ".——", "." to ".—.—.—",
-        "K" to "—.—", "X" to "—..—", "," to "——..——",
-        "L" to ".—..", "Y" to "—.——", "?" to "..——..",
-        "M" to "——", "Z" to "——..", "\"" to ".—..—.", "/" to "—..—.")
-
-    val morseDict = mutableMapOf<String, String>()
-    naturalDict.forEach {
-        morseDict[it.value] = it.key
+    if(string[0] !== '.' && string[0] !== '-' && string[0] !== '/'){
+        for (let i = 0; i < string.length; i++) {
+            decode += morse[string[i]] + ' ';
+        }
+        console.log(decode);
+        return decode;
+    } else{
+        console.log(str.split(' '));
+        for (let i = 0; i < strArray.length; i++) {
+            decode += es[strArray[i]];
+        }
+        console.log(decode);
+        return decode;
     }
 
-    if (input.contains("[a-zA-Z0-9]".toRegex())) {
-
-        // Natural
-
-        var index = 0
-        var ch = false
-
-        input.uppercase().forEach { character ->
-            if (!ch && character.toString() != " ") {
-                val nextIndex = index + 1
-                if (character.toString() == "C" && nextIndex < input.length && input.uppercase()[nextIndex].toString() == "H") {
-                    decodedInput += naturalDict["CH"]
-                    ch = true
-                } else {
-                    decodedInput += naturalDict[character.toString()]
-                }
-
-                decodedInput += " "
-            } else {
-                if (!ch) {
-                    decodedInput += " "
-                }
-                ch = false
-            }
-
-            index++
-        }
-
-    } else if (input.contains(".") || input.contains("—")) {
-
-        // Morse
-
-        input.split("  ").forEach { word ->
-            word.split(" ").forEach { symbols ->
-                if (symbols.isNotEmpty()) {
-                    decodedInput += morseDict[symbols]
-                }
-            }
-            decodedInput += " "
-        }
-    }
-
-    return decodedInput
 }
+
+codeMorse('hola mundo'); 
