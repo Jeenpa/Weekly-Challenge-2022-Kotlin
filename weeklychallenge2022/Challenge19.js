@@ -1,5 +1,3 @@
-package com.mouredev.weeklychallenge2022
-
 /*
  * Reto #19
  * CONVERSOR TIEMPO
@@ -17,18 +15,8 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
-fun main() {
-    println(timeToMillis(0, 0, 0, 10))
-    println(timeToMillis(2, 5, -45, 10))
-    println(timeToMillis(2000000000, 5, 45, 10))
-}
+const timeToMillis = (d, h, m, s) => d*24*60*60*1000 + h*60*60*1000 + m*60*1000 + s*1000;
 
-fun timeToMillis(days: Int, hours: Int, minutes: Int, seconds: Int): Long {
-
-    val daysInMillis = days.toLong() * 24 * 60 * 60 * 1000
-    val hoursInMillis = hours.toLong() * 60 * 60 * 1000
-    val minutesInMillis = minutes.toLong() * 60 * 1000
-    val secondsToMillis = seconds.toLong() * 1000
-
-    return daysInMillis + hoursInMillis + minutesInMillis + secondsToMillis
-}
+console.log(timeToMillis(0, 0, 0, 10));
+console.log(timeToMillis(2, 5, -45, 10));
+console.log(timeToMillis(2000000000, 5, 45, 10));

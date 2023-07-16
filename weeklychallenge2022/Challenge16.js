@@ -1,5 +1,3 @@
-package com.mouredev.weeklychallenge2022
-
 /*
  * Reto #16
  * EN MAYÚSCULA
@@ -19,19 +17,18 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
-fun main() {
-    println(capitalize("¿hola qué tal estás?"))
-    println(capitalize("¿hola      qué tal estás?"))
-    println(capitalize("El niño ñoño"))
+const capitalize = (str)=> {
+    let result = '';
+    let arr = str.trim().replace(/^\s+|\s+$|\s+(?=\s)/g, "").split(' ');
+
+    arr.forEach(e => {
+        result += e[0].toUpperCase() + e.substring(1) + ' ';
+    });
+
+    return result;
 }
 
-private fun capitalize(text: String): String {
 
-    var capitalizedText = text
-
-    text.replace("[^A-zÀ-ú]".toRegex(), " ").split(" ").forEach { word ->
-        capitalizedText = capitalizedText.replace(word, word.replaceFirstChar { it.uppercase() })
-    }
-
-    return capitalizedText
-}
+console.log(capitalize("¿Hola qué tal estás?"));
+console.log(capitalize("¿hola      qué tal estás?"));
+console.log(capitalize("El niño ñoño"));
